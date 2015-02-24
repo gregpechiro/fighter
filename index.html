@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" ng-app="dndApp">
+	<head>
+		<meta charset="utf-8">
+		<title>D&D</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<style type="text/css">
+			.panel {
+				background-color: transparent;
+			}
+
+			.panel-trans > .panel-heading {
+				color: #fff;
+				background-color: #cc0000;
+				border-color: #000;
+			}
+			.panel-trans > .panel-body {
+				color: #ffffff;
+				background-color: rgba(0,0,0,0.75);
+				border-color: #000000;
+			}
+			html, body {
+				height: 100%;
+				background: url('hammer.jpg') no-repeat center center fixed;
+				-webkit-background-size: 
+				cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				background-color: #ccc;
+			}
+		</style>
+		<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-route.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-resource.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-cookies.js"></script>
+		<script src="app.js"></script>
+		<script src="controllers.js"></script>
+		<script src="services.js"></script>
+	</head>
+	<body>
+		<br><br>
+		<div class="container">
+			<div ng-view class="view-frame">
+				
+				
+				
+			</div>
+		</div>
+	
+	</body>
+</html>

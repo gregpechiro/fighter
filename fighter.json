@@ -1,0 +1,10 @@
+{
+	"name"   	: "Sam Gibbs",
+	"age"    	: 18,
+	"bab"    	: 5,
+	"str"    	: 18,
+	"dex"    	: 16,
+	"ac"     	: 19,
+	"damDie" 	: "1d12",
+	"twoHanded" : true
+}

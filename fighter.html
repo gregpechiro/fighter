@@ -1,0 +1,128 @@
+<div class="col-md-12">
+	<div id="error" class="row" ng-show="err">
+		<div class="alert alert-danger text-center" role="alert">{{ err }}</div>
+	</div>
+	<div id="results" class="row" ng-show="result">
+		<div class="panel panel-trans">
+			<div class="panel-heading text-center">Results</div>
+			<div class="panel-body">
+				<div class="col-sm-offset-3 col-sm-1 text-center">
+					<strong>Attack</strong>
+					<p id="attack">{{ attack }}</p>
+				</div>
+				<div class="col-sm-2 text-center">
+					<strong>Damage</strong>
+					<p id="damage">{{ damage }}</p>
+				</div>
+				<div class="col-sm-1 text-center">
+					<strong>Armor</strong>
+					<p id="armor">{{ armor }}</p>
+				</div>
+				<div class="col-sm-2 text-center">
+					<strong>Attack of Opportunity</strong>
+					<p id="aoo">{{ aoo }}</p>
+				</div>
+				<div class="col-sm-3">
+					<strong>Special</strong>
+					<p id="special">{{ special }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-3">
+		<div class="panel panel-trans">
+			<div class="panel-heading text-center">Basic Stats for {{ fighter.name }}</div>
+			<div class="panel-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-6 control-label">BAB: </label>
+						<div class="col-xs-6">
+							<input type="number" class="form-control" id="bab" ng-model="fighter.bab">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-6 control-label">STR: </label>
+						<div class="col-xs-6">
+							<input type="number" class="form-control" id="str" ng-model="fighter.str">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-6 control-label">DEX: </label>
+						<div class="col-xs-6">
+							<input type="number" class="form-control" id="dex" ng-model="fighter.dex">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-6">AC: </label>
+						<div class="col-xs-6">
+							<input type="number" class="form-control" id="ac" ng-model="fighter.ac">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-9">
+		<div class="panel panel-trans">
+			<div class="panel-heading text-center">Round Information</div>
+			<div class="panel-body">
+				<div class="row form-group">
+					<div class="form-inline">
+						<div class="col-md-12">
+								<div class="checkbox">
+  									<label>
+  										<input ng-model="ep" id="ep" ng-change="enlargePerson()" type="checkbox"> Enlarge Person
+  									</label>
+  								</div>
+  							<div class="checkbox">
+  								<label>
+  									<input id="twoHanded" type="checkbox" ng-model="fighter.twoHanded"> Two Handed Weapon
+  								</label>
+  							</div>
+  							<div class="checkbox">
+  								<label>
+  									<input id="charge" type="checkbox" ng-model="charge"> Charge
+  								</label>
+  							</div>
+  							<div class="checkbox">
+  								<label>
+  									<input id="leap" type="checkbox" ng-model="leap"> Leap Attack
+  								</label>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="row">
+  					<div class="col-md-12">
+  						<div class="form-inline">
+  							<div class="form-group">
+								<label for="damDie">Damage:</label>
+								<select id="damDie" ng-model="damDie" class="form-control">
+									<option>1d4</option>
+									<option>1d6</option>
+									<option>1d8</option>
+									<option>1d10</option>
+									<option>1d12</option>
+									<option>2d4</option>
+									<option>2d6</option>
+									<option>2d8</option>
+									<option>2d10</option>
+									<option>2d12</option>
+									<option>3d6</option>
+								</select>
+							</div>
+  							<div class="form-group">
+  								<label for="pa">Power Attack</label>
+								<input type="number" id="pa" style="width:100px" ng-model="pa" class="form-control">
+							</div>
+							<button id="calc" class="btn btn-primary" ng-click="calc()">Calculate</button>
+							<button id="makeAoo" class="btn btn-warning" ng-show="result" ng-click="makeAoo()">Attack of Opportunity</button>
+						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+	</div>
+</div>
