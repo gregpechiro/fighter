@@ -40,13 +40,19 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	function getDamage(strBonus) {
 		var dam = strBonus;
 		if ($scope.fighter.twoHanded) {
-			dam = dam + Math.floor(strBonus * .5)
+			dam += Math.floor(strBonus * .5)
 		}
 		if ($scope.pa != null && $scope.pa >= 0) {
 			if ($scope.fighter.twoHanded) {
-				dam = dam + ($scope.pa * 2);	
+				dam += ($scope.pa * 2);
+				if ($scope.leap) {
+					dam += (($scope.pa * 2) * 3);
+				}
 			} else {
-				dam = dam + $scope.pa;
+				dam += $scope.pa;
+				if ($scope.leap) {
+					dam += (($scope.pa * 2) * 2);
+				}
 			}
 		}
 		return dam;
