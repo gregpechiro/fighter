@@ -24,15 +24,16 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		if ($scope.ep) {
 			bonus -= 1;
 		}
-		attack = 'd20 + ' + bonus;
+
+		attack = (bonus < 0) ? 'd20 - ' + bonus : 'd20 + ' + bonus;
 		if ($scope.fighter.bab > 5) {
-			attack += ' d20 + ' + (bonus - 5);
+			attack += ((bonus - 5) < 0) ? ' d20 ' + (bonus - 5) : ' d20 + ' + (bonus - 5);
 		}
 		if ($scope.fighter.bab > 10) {
-			attack += ' d20 + ' + (bonus - 10);
+			attack += ((bonus - 10) < 0) ? ' d20 ' + (bonus - 10) : ' d20 + ' + (bonus - 10);
 		}
 		if ($scope.fighter.bab > 15) {
-			attack += ' d20 + ' + (bonus - 15);
+			attack += ((bonus - 15) < 0) ? ' d20 ' + (bonus - 15) : ' d20 + ' + (bonus - 15);
 		}
 		return attack;
 	}
@@ -66,16 +67,19 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		return arm
 	}
 
+
+
 	$scope.enlargePerson = function() {
 		if ($scope.ep) {
 			$scope.fighter.str = $scope.fighter.str + 2;
 			$scope.fighter.dex = $scope.fighter.dex - 2;
 			$scope.fighter.ac = $scope.fighter.ac - 2;
-			//$scope.special = $scope.special + 'Increase size category by one';
+			increaseWeaponSize();
 		} else {
 			$scope.fighter.str = $scope.fighter.str - 2;
 			$scope.fighter.dex = $scope.fighter.dex + 2;
 			$scope.fighter.ac = $scope.fighter.ac + 2;
+			decreaseWeaponSize();
 		}
 	}
 
@@ -88,7 +92,7 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 			var strBonus = getAttrBonus($scope.fighter.str);
 			$scope.attack = getAttack(strBonus);
 			$scope.damage = $scope.damDie + ' + ' + getDamage(strBonus);
-			$scope.armor = getArmor(); 
+			$scope.armor = getArmor();
 			$scope.aoo = dexBonus + 1;
 			$scope.result = true;
 		}
@@ -113,5 +117,115 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	$scope.armor = 0;
 	$scope.aoo = 0;
 	$scope.err = ''
+
+	function increaseWeaponSize() {
+		switch ($scope.damDie) {
+			case '1d2':
+				$scope.damDie = '1d3';
+				return;
+			case '1d3':
+				$scope.damDie = '1d4';
+				return;
+			case '1d4':
+				$scope.damDie = '1d6';
+				return;
+			case '1d6':
+				$scope.damDie = '1d8';
+				return;
+			case '1d8':
+				$scope.damDie = '2d6';
+				return;
+			case '1d10':
+				$scope.damDie = '2d8';
+				return;
+			case '1d12':
+				$scope.damDie = '3d6';
+				return;
+			case '2d4':
+				$scope.damDie = '2d6';
+				return;
+			case '2d6':
+				$scope.damDie = '3d6';
+				return;
+			case '2d8':
+				$scope.damDie = '3d8';
+				return;
+			case '2d10':
+				$scope.damDie = '4d8';
+				return;
+			case '3d6':
+				$scope.damDie = '4d6';
+				return;
+			case '3d8':
+				$scope.damDie = '4d8';
+				return;
+			case '4d6':
+				$scope.damDie = '6d6';
+				return;
+			case '4d8':
+				$scope.damDie = '6d8';
+				return;
+			case '6d6':
+				$scope.damDie = '8d6';
+				return;
+			case '6d8':
+				$scope.damDie = '8d8';
+				return;
+			case '8d8':
+				$scope.damDie = '12d8';
+				return;
+		}
+	}
+
+	function decreaseWeaponSize() {
+		switch ($scope.damDie) {
+			case '1d3':
+				$scope.damDie = '1d2';
+				return;
+			case '1d4':
+				$scope.damDie = '1d3';
+				return;
+			case '1d6':
+				$scope.damDie = '1d4';
+				return;
+			case '1d8':
+				$scope.damDie = '1d6';
+				return;
+			case '2d6':
+				$scope.damDie = '1d8';
+				return;
+			case '2d8':
+				$scope.damDie = '1d10';
+				return;
+			case '3d6':
+				$scope.damDie = '1d12';
+				return;
+			case '3d8':
+				$scope.damDie = '2d8';
+				return;
+			case '4d6':
+				$scope.damDie = '3d6';
+				return;
+			case '4d8':
+				$scope.damDie = '3d8';
+				return;
+			case '6d6':
+				$scope.damDie = '4d6';
+				return;
+			case '6d8':
+				$scope.damDie = '4d8';
+				return;
+			case '8d6':
+				$scope.damDie = '6d6';
+				return;
+			case '8d8':
+				$scope.damDie = '6d8';
+				return;
+			case '12d8':
+				$scope.damDie = '8d8';
+				return;
+
+		}
+	}
 
 }]);
