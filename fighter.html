@@ -1,6 +1,6 @@
 <div class="col-md-12">
 	<div id="error" class="row" ng-show="err">
-		<div class="alert alert-danger text-center" role="alert">{{ err }}</div>
+		<div class="alert alert-danger text-center" role="alert"><i class="fa fa-warning"></i> {{ err }} <i class="fa fa-warning"></i></div>
 	</div>
 	<div id="results" class="row" ng-show="result">
 		<div class="panel panel-trans">
@@ -72,11 +72,11 @@
 				<div class="row form-group">
 					<div class="form-inline">
 						<div class="col-md-12">
-								<div class="checkbox">
-  									<label>
-  										<input ng-model="ep" id="ep" ng-change="enlargePerson()" type="checkbox"> Enlarge Person
-  									</label>
-  								</div>
+							<div class="checkbox">
+  								<label>
+  									<input ng-model="ep" id="ep" ng-change="enlargePerson()" type="checkbox"> Enlarge Person
+  								</label>
+  							</div>
   							<div class="checkbox">
   								<label>
   									<input id="twoHanded" type="checkbox" ng-model="fighter.twoHanded"> Two Handed Weapon
@@ -90,6 +90,16 @@
   							<div class="checkbox">
   								<label>
   									<input id="leap" type="checkbox" ng-model="leap"> Leap Attack
+  								</label>
+  							</div>
+							<div class="checkbox">
+								<label>
+									<input id="masterwork" type="checkbox" ng-model="fighter.masterwork"> Masterwork Weapon
+								</label>
+							</div>
+							<div class="checkbox">
+  								<label>
+  									<input ng-model="mw" id="mw" ng-change="mightyWallop()" type="checkbox"> Greater Mighty Wallop
   								</label>
   							</div>
   						</div>

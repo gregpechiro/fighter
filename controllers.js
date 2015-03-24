@@ -24,7 +24,9 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		if ($scope.ep) {
 			bonus -= 1;
 		}
-
+		if ($scope.fighter.masterwork) {
+			bonus ++;
+		}
 		attack = (bonus < 0) ? 'd20 - ' + bonus : 'd20 + ' + bonus;
 		if ($scope.fighter.bab > 5) {
 			attack += ((bonus - 5) < 0) ? ' d20 ' + (bonus - 5) : ' d20 + ' + (bonus - 5);
@@ -67,8 +69,6 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		return arm
 	}
 
-
-
 	$scope.enlargePerson = function() {
 		if ($scope.ep) {
 			$scope.fighter.str = $scope.fighter.str + 2;
@@ -79,6 +79,16 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 			$scope.fighter.str = $scope.fighter.str - 2;
 			$scope.fighter.dex = $scope.fighter.dex + 2;
 			$scope.fighter.ac = $scope.fighter.ac + 2;
+			decreaseWeaponSize();
+		}
+	}
+
+	$scope.mightyWallop = function() {
+		if ($scope.mw) {
+			increaseWeaponSize();
+			increaseWeaponSize();
+		} else {
+			decreaseWeaponSize();
 			decreaseWeaponSize();
 		}
 	}

@@ -4,7 +4,8 @@
 	"bab"    	: 7,
 	"str"    	: 18,
 	"dex"    	: 16,
-	"ac"     	: 19,
+	"ac"     	: 20,
 	"damDie" 	: "1d12",
-	"twoHanded" : true
+	"twoHanded" : true,
+	"masterwork"	: true
 }
