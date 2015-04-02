@@ -47,14 +47,16 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		}
 		if ($scope.pa != null && $scope.pa >= 0) {
 			if ($scope.fighter.twoHanded) {
-				dam += ($scope.pa * 2);
 				if ($scope.leap) {
 					dam += (($scope.pa * 2) * 3);
+				} else {
+					dam += ($scope.pa * 2);
 				}
 			} else {
-				dam += $scope.pa;
 				if ($scope.leap) {
 					dam += (($scope.pa * 2) * 2);
+				} else {
+					dam += $scope.pa;
 				}
 			}
 		}
