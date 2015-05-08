@@ -7,5 +7,5 @@
 	"ac"     	: 20,
 	"damDie" 	: "1d12",
 	"twoHanded" : true,
-	"masterwork"	: true
+	"masterwork"	: false
 }

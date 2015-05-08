@@ -27,7 +27,13 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		if ($scope.fighter.masterwork) {
 			bonus ++;
 		}
+		if ($scope.rg) {
+			bonus -= 2;
+		}
 		attack = (bonus < 0) ? 'd20 - ' + bonus : 'd20 + ' + bonus;
+		if ($scope.rg) {
+			attack += (bonus < 0) ? ' d20 - ' + bonus : ' d20 + ' + bonus;
+		}
 		if ($scope.fighter.bab > 5) {
 			attack += ((bonus - 5) < 0) ? ' d20 ' + (bonus - 5) : ' d20 + ' + (bonus - 5);
 		}
@@ -77,11 +83,13 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 			$scope.fighter.dex = $scope.fighter.dex - 2;
 			$scope.fighter.ac = $scope.fighter.ac - 2;
 			increaseWeaponSize();
+			$scope.special.push('Increase size category by one.<br>');
 		} else {
 			$scope.fighter.str = $scope.fighter.str - 2;
 			$scope.fighter.dex = $scope.fighter.dex + 2;
 			$scope.fighter.ac = $scope.fighter.ac + 2;
 			decreaseWeaponSize();
+			$scope.special = removeValue($scope.special, 'Increase size category by one.<br>');
 		}
 	}
 
@@ -89,9 +97,22 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		if ($scope.mw) {
 			increaseWeaponSize();
 			increaseWeaponSize();
+			$scope.special.push('Increase weapon size category by two.<br>');
 		} else {
 			decreaseWeaponSize();
 			decreaseWeaponSize();
+			$scope.special = removeValue($scope.special, 'Increase weapon size category by two.<br>');
+		}
+	}
+
+	$scope.rage = function() {
+		if ($scope.rg) {
+			$scope.fighter.str += 4;
+			$scope.fighter.ac += 2;
+		} else {
+			$scope.fighter.str -= 4;
+			$scope.fighter.ac -= 2;
+			$scope.special.push('<strong>FATIGUED</strong><br>');
 		}
 	}
 
@@ -118,11 +139,23 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		}
 	}
 
+	$scope.getSpecial = function() {
+		return $scope.special.join(' ');
+	};
+
+	$scope.end = function() {
+		$scope.rg = false;
+		$scope.leap = false;
+		$scope.charge = false;
+		$scope.special = removeValue($scope.special, '<strong>FATIGUED</strong><br>');
+		$scope.result = false;
+	};
+
 
 	$scope.fighter = FighterService.get();
 	$scope.damDie = '1d12';
 	$scope.result = false;
-	$scope.special = '';
+	$scope.special = [];
 	$scope.attack = '';
 	$scope.damage = '';
 	$scope.ep = false;

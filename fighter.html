@@ -25,7 +25,7 @@
 				</div>
 				<div class="col-sm-3">
 					<strong>Special</strong>
-					<p id="special">{{ special }}</p>
+					<p id="special"><span ng-bind-html="getSpecial()"></span></p>
 				</div>
 			</div>
 		</div>
@@ -105,6 +105,42 @@
   						</div>
   					</div>
   				</div>
+				<div class="row form-group">
+					<div class="form-inline">
+						<div class="col-md-12">
+							<div class="checkbox">
+  								<label>
+  									<input ng-model="rg" id="rg" ng-change="rage()" type="checkbox"> <strong style="color:red;">RAGE</strong>
+  								</label>
+  							</div>
+  							<!-- <div class="checkbox">
+  								<label>
+  									<input id="twoHanded" type="checkbox" ng-model="fighter.twoHanded"> Two Handed Weapon
+  								</label>
+  							</div>
+  							<div class="checkbox">
+  								<label>
+  									<input id="charge" type="checkbox" ng-model="charge"> Charge
+  								</label>
+  							</div>
+  							<div class="checkbox">
+  								<label>
+  									<input id="leap" type="checkbox" ng-model="leap"> Leap Attack
+  								</label>
+  							</div>
+							<div class="checkbox">
+								<label>
+									<input id="masterwork" type="checkbox" ng-model="fighter.masterwork"> Masterwork Weapon
+								</label>
+							</div>
+							<div class="checkbox">
+  								<label>
+  									<input ng-model="mw" id="mw" ng-change="mightyWallop()" type="checkbox"> Greater Mighty Wallop
+  								</label>
+  							</div> -->
+  						</div>
+  					</div>
+  				</div>
   				<div class="row">
   					<div class="col-md-12">
   						<div class="form-inline">
@@ -139,6 +175,7 @@
 							</div>
 							<button id="calc" class="btn btn-primary" ng-click="calc()">Calculate</button>
 							<button id="makeAoo" class="btn btn-warning" ng-show="result" ng-click="makeAoo()">Attack of Opportunity</button>
+							<button id="end" class="btn btn-default" ng-show="result" ng-click="end()">End of Encounter</button>
 						</div>
   					</div>
   				</div>
