@@ -4,6 +4,7 @@
 
 var userApp = angular.module('dndApp', [
 	'ngRoute',
+	'ngSanitize',
 	'controllers',
 	'services'
 ]);
