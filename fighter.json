@@ -4,6 +4,7 @@
 	"bab"    	: 7,
 	"str"    	: 18,
 	"dex"    	: 16,
+	"con"		: 15,
 	"ac"     	: 20,
 	"damDie" 	: "1d12",
 	"twoHanded" : true,

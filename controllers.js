@@ -29,6 +29,15 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		}
 		if ($scope.rg) {
 			bonus -= 2;
+			// if ($scope.rageRounds < 1) {
+			// 	$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);
+			// }
+			$scope.rageRounds--;
+			if ($scope.rageRounds < 1) {
+				$scope.rg = false;
+				$scope.rage();
+				$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);
+			}
 		}
 		attack = (bonus < 0) ? 'd20 - ' + bonus : 'd20 + ' + bonus;
 		if ($scope.rg) {
@@ -152,7 +161,10 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	};
 
 
-	$scope.fighter = FighterService.get();
+	FighterService.get().$promise.then(function(data) {
+		$scope.fighter = data;
+		$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);
+	});
 	$scope.damDie = '1d12';
 	$scope.result = false;
 	$scope.special = [];
@@ -161,7 +173,7 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	$scope.ep = false;
 	$scope.armor = 0;
 	$scope.aoo = 0;
-	$scope.err = ''
+	$scope.err = '';
 
 	function increaseWeaponSize() {
 		switch ($scope.damDie) {
