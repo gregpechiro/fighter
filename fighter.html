@@ -31,46 +31,51 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-lg-6">
 		<div class="panel panel-trans">
 			<div class="panel-heading text-center">Basic Stats for {{ fighter.name }}</div>
 			<div class="panel-body">
-				<form class="form-horizontal">
-					<div class="form-group">
-						<label class="col-xs-6 control-label">BAB: </label>
-						<div class="col-xs-6">
-							<input type="number" class="form-control" id="bab" ng-model="fighter.bab">
+				<div class="col-sm-8">
+					<img src="sam2.png" class="img-responsive"/>
+				</div>
+				<div class="col-sm-4">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-xs-3 control-label">BAB: </label>
+							<div class="col-xs-9">
+								<input type="number" class="form-control" id="bab" ng-model="fighter.bab">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-xs-6 control-label">STR: </label>
-						<div class="col-xs-6">
-							<input type="number" class="form-control" id="str" ng-model="fighter.str">
+						<div class="form-group">
+							<label class="col-xs-3 control-label">STR: </label>
+							<div class="col-xs-9">
+								<input type="number" class="form-control" id="str" ng-model="fighter.str">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-xs-6 control-label">DEX: </label>
-						<div class="col-xs-6">
-							<input type="number" class="form-control" id="dex" ng-model="fighter.dex">
+						<div class="form-group">
+							<label class="col-xs-3 control-label">DEX: </label>
+							<div class="col-xs-9">
+								<input type="number" class="form-control" id="dex" ng-model="fighter.dex">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-xs-6 control-label">CON: </label>
-						<div class="col-xs-6">
-							<input type="number" class="form-control" id="con" ng-model="fighter.con">
+						<div class="form-group">
+							<label class="col-xs-3 control-label">CON: </label>
+							<div class="col-xs-9">
+								<input type="number" class="form-control" id="con" ng-model="fighter.con">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-xs-6">AC: </label>
-						<div class="col-xs-6">
-							<input type="number" class="form-control" id="ac" ng-model="fighter.ac">
+						<div class="form-group">
+							<label class="col-xs-3 control-label">AC: </label>
+							<div class="col-xs-9">
+								<input type="number" class="form-control" id="ac" ng-model="fighter.ac">
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-9">
+	<div class="col-lg-6  text-center">
 		<div class="panel panel-trans">
 			<div class="panel-heading text-center">Round Information</div>
 			<div class="panel-body">
@@ -78,79 +83,81 @@
 					<div class="form-inline">
 						<div class="col-md-12">
 							<div class="checkbox">
-  								<label>
-  									<input ng-model="ep" id="ep" ng-change="enlargePerson()" type="checkbox"> Enlarge Person
-  								</label>
-  							</div>
-  							<div class="checkbox">
-  								<label>
-  									<input id="twoHanded" type="checkbox" ng-model="fighter.twoHanded"> Two Handed Weapon
-  								</label>
-  							</div>
-  							<div class="checkbox">
-  								<label>
-  									<input id="charge" type="checkbox" ng-model="charge"> Charge
-  								</label>
-  							</div>
-  							<div class="checkbox">
-  								<label>
-  									<input id="leap" type="checkbox" ng-model="leap"> Leap Attack
-  								</label>
-  							</div>
-							<div class="checkbox">
 								<label>
-									<input id="masterwork" type="checkbox" ng-model="fighter.masterwork"> Masterwork Weapon
+									<input ng-model="ep" id="ep" ng-change="enlargePerson()" type="checkbox"> Enlarge Person&nbsp;&nbsp;
 								</label>
 							</div>
 							<div class="checkbox">
-  								<label>
-  									<input ng-model="mw" id="mw" ng-change="mightyWallop()" type="checkbox"> Greater Mighty Wallop
-  								</label>
-  							</div>
-  						</div>
-  					</div>
-  				</div>
+								<label>
+									<input id="twoHanded" type="checkbox" ng-model="fighter.twoHanded"> Two Handed Weapon&nbsp;&nbsp;
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input id="charge" type="checkbox" ng-model="charge"> Charge&nbsp;&nbsp;
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input id="leap" type="checkbox" ng-model="leap"> Leap Attack&nbsp;&nbsp;
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row form-group">
 					<div class="form-inline">
 						<div class="col-md-12">
 							<div class="checkbox">
-  								<label>
-  									<input ng-model="rg" id="rg" ng-change="rage()" type="checkbox"> <strong style="color:red;">RAGE</strong>
-									<span ng-if="rg"> {{ rageRounds }} Rounds Remaining</span>
-  								</label>
-  							</div>
-  							<!-- <div class="checkbox">
-  								<label>
-  									<input id="twoHanded" type="checkbox" ng-model="fighter.twoHanded"> Two Handed Weapon
-  								</label>
-  							</div>
-  							<div class="checkbox">
-  								<label>
-  									<input id="charge" type="checkbox" ng-model="charge"> Charge
-  								</label>
-  							</div>
-  							<div class="checkbox">
-  								<label>
-  									<input id="leap" type="checkbox" ng-model="leap"> Leap Attack
-  								</label>
-  							</div>
-							<div class="checkbox">
 								<label>
-									<input id="masterwork" type="checkbox" ng-model="fighter.masterwork"> Masterwork Weapon
+									<input id="masterwork" type="checkbox" ng-model="fighter.masterwork"> Masterwork Weapon&nbsp;&nbsp;
 								</label>
 							</div>
 							<div class="checkbox">
-  								<label>
-  									<input ng-model="mw" id="mw" ng-change="mightyWallop()" type="checkbox"> Greater Mighty Wallop
-  								</label>
-  							</div> -->
-  						</div>
-  					</div>
-  				</div>
-  				<div class="row">
-  					<div class="col-md-12">
-  						<div class="form-inline">
-  							<div class="form-group">
+								<label>
+									<input ng-model="mw" id="mw" ng-change="mightyWallop()" type="checkbox"> Greater Mighty Wallop&nbsp;&nbsp;
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input ng-model="rg" id="rg" ng-change="rage()" type="checkbox"> <strong style="color:red;">RAGE</strong>
+									<span ng-if="rg"> {{ rageRounds }} Rounds Remaining</span>&nbsp;&nbsp;
+								</label>
+							</div>
+							<!--
+							<div class="checkbox">
+								<label>
+									<input id="twoHanded" type="checkbox" ng-model="fighter.twoHanded"> Two Handed Weapon&nbsp;&nbsp;
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input id="charge" type="checkbox" ng-model="charge"> Charge&nbsp;&nbsp;
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input id="leap" type="checkbox" ng-model="leap"> Leap Attack&nbsp;&nbsp;
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input id="masterwork" type="checkbox" ng-model="fighter.masterwork"> Masterwork Weapon&nbsp;&nbsp;
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input ng-model="mw" id="mw" ng-change="mightyWallop()" type="checkbox"> Greater Mighty Wallop&nbsp;&nbsp;
+								</label>
+							</div>
+							-->
+						</div>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-12">
+						<div class="form-inline">
+							<div class="form-group">
 								<label for="damDie">Damage:</label>
 								<select id="damDie" ng-model="damDie" class="form-control">
 									<option>1d2</option>
@@ -175,17 +182,23 @@
 									<option>12d8</option>
 								</select>
 							</div>
-  							<div class="form-group">
-  								<label for="pa">Power Attack</label>
+							<div class="form-group">
+								<label for="pa">&nbsp;&nbsp;Power Attack:</label>
 								<input type="number" id="pa" style="width:100px" ng-model="pa" class="form-control">
 							</div>
 							<button id="calc" class="btn btn-primary" ng-click="calc()">Calculate</button>
+						</div>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-12">
+						<div class="form-inline">
 							<button id="makeAoo" class="btn btn-warning" ng-show="result" ng-click="makeAoo()">Attack of Opportunity</button>
 							<button id="end" class="btn btn-default" ng-show="result" ng-click="end()">End of Encounter</button>
 						</div>
-  					</div>
-  				</div>
-  			</div>
-  		</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
