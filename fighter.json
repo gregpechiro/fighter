@@ -1,12 +1,16 @@
 {
 	"name"   	: "Sam Gibbs",
 	"age"    	: 18,
-	"bab"    	: 7,
+	"bab"    	: 8,
 	"str"    	: 18,
 	"dex"    	: 16,
-	"con"		: 15,
+	"con"		: 16,
 	"ac"     	: 20,
-	"damDie" 	: "1d12",
-	"twoHanded" : true,
-	"masterwork"	: false
+	"armor"     : 18,
+	"weapon"    : {
+		"twoHanded"  : true,
+		"masterwork" : false,
+		"damDie" 	 : "1d12",
+		"enhancement": 0
+	}
 }

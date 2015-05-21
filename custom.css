@@ -1,0 +1,31 @@
+html, body {
+    height: 100%;
+    background: url('hammer.jpg') no-repeat center center fixed;
+    -webkit-background-size:
+    cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #ccc;
+
+}
+
+.panel {
+    background-color: transparent;
+}
+.panel-trans > .panel-heading {
+    color: #fff;
+    background-color: #cc0000;
+    border-color: #000;
+}
+.panel-trans > .panel-body {
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.75);
+    border-color: #000000;
+}
+
+.alert-danger {
+    color : #000;
+    background-color: rgba(255,0,0,1);
+    border-color: #000000;
+}
