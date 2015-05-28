@@ -169,11 +169,13 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 
 	$scope.end = function() {
 		$scope.rg = false;
+		$scope.rage();
 		$scope.leap = false;
 		$scope.charge = false;
-		$scope.special = removeValue($scope.special, '<strong>FATIGUED</strong><br>');
 		$scope.result = false;
 		if ($scope.fatigued) {
+			console.log($scope.special);
+			$scope.special = removeValue($scope.special, '<strong>FATIGUED</strong><br>');
 			$scope.fatigued = false;
 			$scope.fighter.str += 2;
 			$scope.fighter.dex += 2;
