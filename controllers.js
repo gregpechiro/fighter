@@ -40,32 +40,32 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 				$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);
 			}
 		}
-		attack = (bonus < 0) ? 'd20 - ' + bonus : 'd20 + ' + bonus;
+		attack = (bonus < 0) ? 'd20 - ' + Math.abs(bonus) : 'd20 + ' + bonus;
 		if ($scope.rg) {
-			attack += (bonus < 0) ? ' d20 - ' + bonus : ' d20 + ' + bonus;
+			attack += (bonus < 0) ? ' d20 - ' + Math.abs(bonus) : ' d20 + ' + bonus;
 		}
 		if ($scope.fighter.bab > 5) {
-			attack += ((bonus - 5) < 0) ? ' d20 ' + (bonus - 5) : ' d20 + ' + (bonus - 5);
+			attack += ((bonus - 5) < 0) ? ' d20 - ' + Math.abs(bonus) : ' d20 + ' + (bonus - 5);
 		}
 		if ($scope.fighter.bab > 10) {
-			attack += ((bonus - 10) < 0) ? ' d20 ' + (bonus - 10) : ' d20 + ' + (bonus - 10);
+			attack += ((bonus - 10) < 0) ? ' d20 - ' + Math.abs(bonus) : ' d20 + ' + (bonus - 10);
 		}
 		if ($scope.fighter.bab > 15) {
-			attack += ((bonus - 15) < 0) ? ' d20 ' + (bonus - 15) : ' d20 + ' + (bonus - 15);
+			attack += ((bonus - 15) < 0) ? ' d20 - ' + Math.abs(bonus) : ' d20 + ' + (bonus - 15);
 		}
 		return attack;
 	}
 
 	function getDamage(strBonus) {
 		var dam = strBonus;
-		if ($scope.fighter.twoHanded) {
+		if ($scope.fighter.weapon.twoHanded) {
 			dam += Math.floor(strBonus * .5)
 		}
 		if ($scope.fighter.weapon.masterwork && $scope.fighter.weapon.enhancement > 0) {
 			dam += $scope.fighter.weapon.enhancement;
 		}
 		if ($scope.pa != null && $scope.pa >= 0) {
-			if ($scope.fighter.twoHanded) {
+			if ($scope.fighter.weapon.twoHanded) {
 				if ($scope.leap) {
 					dam += (($scope.pa * 2) * 3);
 				} else {
@@ -134,7 +134,6 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 			var strBonus = getAttrBonus($scope.fighter.str);
 			$scope.attack = getAttack(strBonus);
 			$scope.damage = $scope.fighter.weapon.damDie + ' + ' + getDamage(strBonus);
-			//$scope.armor = getArmor();
 			$scope.getAc();
 			$scope.aoo = dexBonus + 1;
 			$scope.result = true;
@@ -166,13 +165,21 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		}
 	}
 
+	function endRage() {
+		if ($scope.rg) {
+			$scope.rg = false;
+			$scope.rage();
+		}
+	}
+
+
 	$scope.end = function() {
-		$scope.rg = false;
+		endRage();
 		$scope.leap = false;
 		$scope.charge = false;
-		$scope.special = removeValue($scope.special, '<strong>FATIGUED</strong><br>');
 		$scope.result = false;
 		if ($scope.fatigued) {
+			$scope.special = removeValue($scope.special, '<strong>FATIGUED</strong><br>');
 			$scope.fatigued = false;
 			$scope.fighter.str += 2;
 			$scope.fighter.dex += 2;
@@ -191,7 +198,6 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	$scope.attack = '';
 	$scope.damage = '';
 	$scope.ep = false;
-	//$scope.armor = 0;
 	$scope.aoo = 0;
 	$scope.err = '';
 

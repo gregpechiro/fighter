@@ -1,4 +1,5 @@
 function binarySearch(array, target, lb, ub) {
+	// lb=0 ub=1
 	if (lb > ub) {
 		return -1;
 	}
@@ -14,7 +15,7 @@ function binarySearch(array, target, lb, ub) {
 }
 
 function removeValue(array, target) {
-	sorted = array.sort(function(a, b){return a-b});
+	sorted = array.sort();
     var index = binarySearch(sorted, target, 0, array.length-1);
     var newList = sorted.slice(0, index);
     return newList.concat(sorted.slice(index + 1, sorted.length));
