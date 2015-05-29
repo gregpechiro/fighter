@@ -82,7 +82,6 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		return dam;
 	}
 
-
 	$scope.enlargePerson = function() {
 		if ($scope.ep) {
 			$scope.fighter.str += 2;
@@ -171,7 +170,6 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 			$scope.rage();
 		}
 	}
-
 
 	$scope.end = function() {
 		endRage();
