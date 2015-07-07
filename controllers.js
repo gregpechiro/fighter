@@ -40,7 +40,11 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 				$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);
 			}
 		}
+		bonus = $scope.mog? bonus + 3 : bonus;
 		attack = (bonus < 0) ? 'd20 - ' + Math.abs(bonus) : 'd20 + ' + bonus;
+		if ($scope.mog && !$scope.rg) {
+			attack += (bonus < 0) ? ' d20 - ' + Math.abs(bonus) : ' d20 + ' + bonus;
+		}
 		if ($scope.rg) {
 			attack += (bonus < 0) ? ' d20 - ' + Math.abs(bonus) : ' d20 + ' + bonus;
 		}
@@ -78,6 +82,9 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 					dam += $scope.pa;
 				}
 			}
+		}
+		if ($scope.mog) {
+			dam += 3;
 		}
 		return dam;
 	}
@@ -152,7 +159,7 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	};
 
 	$scope.getAc = function() {
-		$scope.armor = $scope.fighter.armor + getAttrBonus($scope.fighter.dex);
+		$scope.armor = 10 + $scope.fighter.armor + getAttrBonus($scope.fighter.dex) + $scope.fighter.dodge;
 		if ($scope.charge) {
 			$scope.armor -= 2;
 		}
@@ -162,6 +169,8 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		if ($scope.ep) {
 			$scope.armor -= 1;
 		}
+		$scope.ff = $scope.armor - getAttrBonus($scope.fighter.dex) - $scope.fighter.dodge;
+		$scope.touch = $scope.armor - $scope.fighter.armor
 	}
 
 	function endRage() {
