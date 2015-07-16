@@ -127,7 +127,6 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 			$scope.getAc();
 			$scope.special.push('<strong>FATIGUED</strong><br>');
 			$scope.fatigued = true;
-
 		}
 	}
 
@@ -185,6 +184,7 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		$scope.leap = false;
 		$scope.charge = false;
 		$scope.result = false;
+		$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);
 		if ($scope.fatigued) {
 			$scope.special = removeValue($scope.special, '<strong>FATIGUED</strong><br>');
 			$scope.fatigued = false;
@@ -207,6 +207,7 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	$scope.ep = false;
 	$scope.aoo = 0;
 	$scope.err = '';
+	$scope.fatigued = false;
 
 	function increaseWeaponSize() {
 		switch ($scope.fighter.weapon.damDie) {
