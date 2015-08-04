@@ -84,7 +84,7 @@
 						</div>
 
 						<div class="row">
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label class="col-xs-5 text-right">Touch: </label>
 								<div class="col-xs-7 text-left">
 									{{touch}}
@@ -101,8 +101,52 @@
 								<div class="col-xs-7 text-left">
 									{{armor}}
 								</div>
+							</div> -->
+							<table class="table">
+								<thead>
+									<tr>
+										<th class="text-center">Touch AC</th>
+										<th class="text-center">Flat Footed AC</th>
+										<th class="text-center">Full AC</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{touch}}</td>
+										<td>{{ff}}</td>
+										<td>{{armor}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table">
+								<thead>
+									<tr>
+										<th class="text-center">Max HP</th>
+										<th class="text-center">Temp Max HP</th>
+										<th class="text-center">Current HP</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{fighter.maxHP}}</td>
+										<td>{{tempMax}}</td>
+										<td>{{currentHP}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-lg-8">
+								<div class="input-group">
+									<span class="input-group-btn">
+										<button class="btn btn-danger">-</button>
+									</span>
+									<input type="text" class="form-control" placeholder="HP">
+									<span class="input-group-btn">
+										<button class="btn btn-success">+</button>
+									</span>
+								</div>
 							</div>
 						</div>
+
 					</form>
 				</div>
 			</div>

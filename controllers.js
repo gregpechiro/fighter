@@ -198,6 +198,8 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		$scope.fighter = data;
 		$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);
 		$scope.getAc();
+		$scope.currentHP = data.maxHP;
+		$scope.tempMax = data.maxHP;
 	});
 
 	$scope.result = false;
