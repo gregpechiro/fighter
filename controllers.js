@@ -194,6 +194,18 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 		}
 	};
 
+	$scope.subHP = function() {
+		$scope.currentHP -= $scope.modHP
+	}
+
+	$scope.addHP = function() {
+		if (($scope.currentHP + $scope.modHP) >= $scope.fighter.maxHP) {
+			$scope.currentHP = $scope.fighter.maxHP
+		} else {
+			$scope.currentHP += $scope.modHP
+		}
+	}
+
 	FighterService.get().$promise.then(function(data) {
 		$scope.fighter = data;
 		$scope.rageRounds = 3 + getAttrBonus($scope.fighter.con);

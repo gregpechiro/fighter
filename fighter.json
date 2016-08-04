@@ -1,18 +1,18 @@
 {
-	"name"   	: "Sam Gibbs",
-	"level"   : 10,
-	"age"    	: 18,
-	"bab"    	: 10,
-	"str"    	: 18,
-	"dex"    	: 16,
-	"con"		  : 16,
-	"armor"   : 6,
-	"dodge"		: 1,
-	"maxHP"   : 100,
-	"weapon"  : {
-		"twoHanded"   : true,
-		"masterwork"  : false,
-		"damDie" 	    : "1d12",
-		"enhancement" : 0
-	}
+    "name": "Sam Gibbs",
+    "level": 11,
+    "age": 18,
+    "bab": 11,
+    "str": 18,
+    "dex": 16,
+    "con": 16,
+    "armor": 6,
+    "dodge": 1,
+    "maxHP": 109,
+    "weapon": {
+        "twoHanded": true,
+        "masterwork": false,
+        "damDie": "1d12",
+        "enhancement": 0
+    }
 }
