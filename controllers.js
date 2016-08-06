@@ -195,12 +195,16 @@ controllers.controller('FighterController', ['$scope', 'FighterService', '$cooki
 	};
 
 	$scope.subHP = function() {
-		$scope.currentHP -= $scope.modHP
+		if (($scope.currentHP - $scope.modHP) <= (-$scope.fighter.con)) {
+			$scope.currentHP = (-$scope.fighter.con)
+		} else {
+			$scope.currentHP -= $scope.modHP
+		}
 	}
 
 	$scope.addHP = function() {
-		if (($scope.currentHP + $scope.modHP) >= $scope.fighter.maxHP) {
-			$scope.currentHP = $scope.fighter.maxHP
+		if (($scope.currentHP + $scope.modHP) >= $scope.tempMax) {
+			$scope.currentHP = $scope.tempMax
 		} else {
 			$scope.currentHP += $scope.modHP
 		}
