@@ -11,7 +11,7 @@
     "maxHP": 109,
     "weapon": {
         "twoHanded": true,
-        "masterwork": false,
+        "masterwork": true,
         "damDie": "1d12",
         "enhancement": 0
     }
